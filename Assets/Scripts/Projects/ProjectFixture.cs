@@ -8,6 +8,7 @@ public class ProjectFixture : MonoBehaviour {
 	void Start () {
 		AddProjectToCurrentProjects(CreateProject());
 		AddProjectsToCurrentEmployees();
+		AdjustAllEmployeeContribution();
 	}
 	
 	// Update is called once per frame
@@ -27,6 +28,12 @@ public class ProjectFixture : MonoBehaviour {
 	void AddProjectsToCurrentEmployees() {
 		foreach(Employee employee in Managers.EmployeeManager.Employees) {
 			Managers.EmployeeManager.AssignProjectToEmployee(Managers.ProjectManager.GetProject(0), employee);
+		}
+	}
+
+	void AdjustAllEmployeeContribution() {
+		foreach(Employee employee in Managers.EmployeeManager.Employees) {
+			employee.contributeAmount = Random.Range(3,8);
 		}
 	}
 }

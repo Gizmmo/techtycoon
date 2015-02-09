@@ -10,9 +10,10 @@ public class Project {
 		this.effortNeeded = effortNeeded;
 	}
 
-	public bool ContributeEffort(float amountContributed) {
+	public float ContributeEffort(float amountContributed) {
 		AddEffort(amountContributed);
-		return IsEffortMaxed();
+		Debug.Log ("Effort Contributed by Employee: " + amountContributed +", Total Effort Contribued: " + effortContributed + ", Total Effort Needed: " + effortNeeded );
+		return effortContributed;
 	}
 
 	void AddEffort(float amountContributed) {
@@ -23,11 +24,7 @@ public class Project {
 		}
 	}
 
-	bool IsEffortMaxed() {
-		if(effortContributed > effortNeeded) {
-			effortContributed = effortNeeded;
-		}
-		
+	public bool IsProjectComplete() {
 		if(effortContributed == effortNeeded) {
 			return true;
 		}

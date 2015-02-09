@@ -6,6 +6,7 @@ public class Employee : MonoBehaviour {
 	private GameObject _seat;
 	private bool isWorking;
 
+	public float contributeAmount = 5.0f;  //This will change later when indivual team members and levels are introduced
 	private Project currentProject;
 
 	public bool isInSeat {
@@ -65,7 +66,7 @@ public class Employee : MonoBehaviour {
 
 	IEnumerator ContributeWork() {
 		while(CanWork()) {
-			Debug.Log ("Contribute!");
+			Managers.ProjectManager.ContributeToProject(contributeAmount, currentProject);
 			yield return new WaitForSeconds(5.0f);
 		}
 		StopWorking();

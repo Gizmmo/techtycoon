@@ -7,7 +7,13 @@ public class ProjectManager : MonoBehaviour {
 	List<Project> currentProjects = new List<Project>();
 
 	public void ContributeToProject(float amountContributed, Project project) {
-		project.ContributeEffort(amountContributed);
+		if (!project.IsProjectComplete()) {
+			project.ContributeEffort(amountContributed);
+
+			if (project.IsProjectComplete()) {
+				EmitProjectComplete(project);
+			}
+		}
 	}
 
 	public void AddProject(Project newProject) {
@@ -16,5 +22,9 @@ public class ProjectManager : MonoBehaviour {
 
 	public Project GetProject(int index) {
 		return currentProjects[index];
+	}
+
+	void EmitProjectComplete(Project project) {
+		Debug.Log ("Project Complete");
 	}
 }
