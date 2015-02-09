@@ -46,11 +46,14 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\ChairStatus.cs" />
-     <Compile Include="Assets\Scripts\Employee.cs" />
-     <Compile Include="Assets\Scripts\EmployeeManager.cs" />
-     <Compile Include="Assets\Scripts\Managers.cs" />
-     <Compile Include="Assets\Scripts\MoveToOpenSeat.cs" />
+     <Compile Include="Assets\Scripts\Chairs\ChairStatus.cs" />
+     <Compile Include="Assets\Scripts\Employee\Employee.cs" />
+     <Compile Include="Assets\Scripts\Employee\EmployeeManager.cs" />
+     <Compile Include="Assets\Scripts\Employee\MoveToOpenSeat.cs" />
+     <Compile Include="Assets\Scripts\Projects\Project.cs" />
+     <Compile Include="Assets\Scripts\Projects\ProjectFixture.cs" />
+     <Compile Include="Assets\Scripts\Projects\ProjectManager.cs" />
+     <Compile Include="Assets\Scripts\Static\Managers.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
