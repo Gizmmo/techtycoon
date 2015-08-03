@@ -17,13 +17,15 @@ public class ProjectFixture : MonoBehaviour {
 	}
 
 	void AddProjectsToCurrentEmployees() {
+		//todo: easy - change to for loop
 		foreach(var employee in EmployeeManager.Instance.Employees) {
 			EmployeeManager.Instance.AssignProjectToEmployee(ProjectManager.Instance.GetProject(0), employee);
 		}
 	}
 
 	void AdjustAllEmployeeContribution() {
-		foreach(Employee employee in EmployeeManager.Instance.Employees) {
+		//todo: easy - Change to for loop
+		foreach(ActorEmployee employee in EmployeeManager.Instance.Employees) {
 			employee.ContributeAmount = Random.Range(3,8);
 		}
 	}

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Employee : MonoBehaviour {
+public partial class ActorEmployee : MonoBehaviour {
 	private Project _currentProject;
 	private bool _isWorking;
 
@@ -9,10 +9,15 @@ public class Employee : MonoBehaviour {
 	public GameObject Seat { get; set; }
 	public bool IsInSeat { get; set; }
 
-	public Employee() {
-		IsInSeat = false;
+	private enum WorkStates {
+		Working,
+		Searching,
+		Waiting,
+		Idle
 	}
 
+	private Fsm<WorkStates, ConcreteState> _workFsm = new Fsm<WorkStates, ConcreteState>(); 
+	
 	public void AssignProject (Project project) {
 		_currentProject = project;
 		StartWorking();

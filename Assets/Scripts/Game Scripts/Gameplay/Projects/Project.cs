@@ -1,34 +1,29 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Project {
-	float effortContributed;
-	float effortNeeded;
+	float _effortContributed;
+	float _effortNeeded;
 
 	public Project(float effortNeeded) {
-		this.effortContributed = 0.0f;
-		this.effortNeeded = effortNeeded;
+		_effortContributed = 0.0f;
+		_effortNeeded = effortNeeded;
 	}
 
 	public float ContributeEffort(float amountContributed) {
 		AddEffort(amountContributed);
-		Debug.Log ("Effort Contributed by Employee: " + amountContributed +", Total Effort Contribued: " + effortContributed + ", Total Effort Needed: " + effortNeeded );
-		return effortContributed;
+		Debug.Log ("Effort Contributed by ActorEmployee: " + amountContributed +", Total Effort Contribued: " + _effortContributed + ", Total Effort Needed: " + _effortNeeded );
+		return _effortContributed;
 	}
 
 	void AddEffort(float amountContributed) {
-		if(effortContributed + amountContributed > effortNeeded) {
-			amountContributed = effortNeeded;
+		if(_effortContributed + amountContributed > _effortNeeded) {
+			_effortContributed = _effortNeeded;
 		} else {
-			effortContributed += amountContributed;
+			_effortContributed += amountContributed;
 		}
 	}
 
 	public bool IsProjectComplete() {
-		if(effortContributed == effortNeeded) {
-			return true;
-		}
-		
-		return false;
+		return _effortContributed >= _effortNeeded;
 	}
 }

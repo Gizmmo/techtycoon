@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 
 public class EmployeeManager : Manager<EmployeeManager> {
-	List<Employee> _employees = new List<Employee>();
+	List<ActorEmployee> _employees = new List<ActorEmployee>();
 	List<ChairStatus> _chairs = new List<ChairStatus>();
 
-	public List<Employee> Employees {
+	public List<ActorEmployee> Employees {
 		get {
 			return _employees;
 		}
 	}
 
 	void Awake () {
-		var emps = FindObjectsOfType(typeof(Employee)) as Employee[];
+		var emps = FindObjectsOfType(typeof(ActorEmployee)) as ActorEmployee[];
 		foreach(var emp in emps) {
 			_employees.Add(emp);
 		}
@@ -32,8 +32,8 @@ public class EmployeeManager : Manager<EmployeeManager> {
 		return null;
 	}
 
-	public bool AssignProjectToEmployee (Project project, Employee employee) {
-		employee.AssignProject(project);
+	public bool AssignProjectToEmployee (Project project, ActorEmployee actorEmployee) {
+		actorEmployee.AssignProject(project);
 		return true;
 	}
 }

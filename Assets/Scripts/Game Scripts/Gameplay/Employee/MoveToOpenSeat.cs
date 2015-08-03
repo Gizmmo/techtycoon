@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 public class MoveToOpenSeat : MonoBehaviour {
-	private Employee _employee;
+	private ActorEmployee _actorEmployee;
 	private EmployeeManager _employeeManager;
 	private Transform _startMarker;
 	private Transform _endMarker;
@@ -19,19 +19,19 @@ public class MoveToOpenSeat : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
-		_employee = GetComponent<Employee>();
+		_actorEmployee = GetComponent<ActorEmployee>();
 		_employeeManager = EmployeeManager.Instance;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(!_employee.IsInSeat) {
+		if(!_actorEmployee.IsInSeat) {
 			LookForSeat();
 		}
 	}
 
 	void LookForSeat() {
-		if (_employee.Seat == null) {
+		if (_actorEmployee.Seat == null) {
 			FindASeat();
 		} else {
 			MoveToSeat();
@@ -43,9 +43,9 @@ public class MoveToOpenSeat : MonoBehaviour {
 		if (seat == null) {
 			return;
 		}
-		_employee.Seat = seat;
+		_actorEmployee.Seat = seat;
 		_startMarker = transform;
-		_endMarker = _employee.Seat.transform;
+		_endMarker = _actorEmployee.Seat.transform;
 		_startTime = Time.time;
 		_journeyLength = Vector3.Distance(_startMarker.position, _endMarker.position);
 		_chair = seat.GetComponent(typeof(ChairStatus)) as ChairStatus;
@@ -66,7 +66,7 @@ public class MoveToOpenSeat : MonoBehaviour {
 	}
 
 	void SitDown() {
-		_employee.SitDown();
+		_actorEmployee.SitDown();
 		_chair.isChairOpen = false;
 		transform.position = _chair.transform.position;
 	}
